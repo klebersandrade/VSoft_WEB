@@ -10,7 +10,6 @@ export const adminLteConf = {
   // layout: 'normal',
   sidebarLeftMenu: [
     {label: 'MENU DE NAVEGAÇÃO', separator: true},
-    {label: 'Dashboard', route: '/', iconClasses: 'fa fa-dashboard'},
     {label: 'Cadastros', iconClasses: 'fa fa-keyboard-o', children: [
       {label: 'Cadastro de Vagas', route: 'cadastros/vagas'}
     ]},

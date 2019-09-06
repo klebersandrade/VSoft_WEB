@@ -1,3 +1,84 @@
-<p>
-  movimentoperiodo works!
-</p>
+<section class="content-header">
+  <h1>
+    Relatórios
+    <small>Situação do Estacionamento</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a [routerLink]="['/']"><i class="fa fa-bar-chart"></i> Relatórios</a></li>
+    <li class="active">Situação do Estacionamento</li>
+  </ol>
+</section>
+
+<div class="box">
+  <div class="box-header">
+    <div class="row">
+      <div class="form-group col-xs-12 col-sm-4 col-md-3 col-lg-2">
+        <label>Datas entre:</label>
+        <div class="input-group">
+          <div class="input-group-addon">
+            <i class="fa fa-calendar"></i>
+          </div>
+          <input type="text" class="form-control pull-right" id="datasFiltroInicial" name="datasFiltroInicial">
+        </div>
+        <i class="fa fa-arrows-h iconSmHide" style="position: absolute; top: 60%; left: 97%"></i>
+      </div>
+      <div class="form-group col-xs-12 col-sm-4 col-md-3 col-lg-2">
+        <label class="lbEmpty">{{'&#160;'}}</label>
+        <div class="input-group">
+          <div class="input-group-addon">
+            <i class="fa fa-calendar"></i>
+          </div>
+          <input type="text" class="form-control pull-right" id="datasFiltroFinal" name="datasFiltroFinal">
+        </div>
+      </div>
+      <div class="form-group col-xs-12 col-sm-4 col-md-3 col-lg-2">
+        <label class="lbEmpty">{{'&#160;'}}</label>
+        <button class="btn btn-primary btn-block" (click)="filtrar()">Filtrar</button>
+      </div>
+      <div class="form-group col-xs-12 col-sm-4 col-md-3 col-lg-2 pull-right">
+        <div class="row pull-right" style="margin-bottom: 2px">
+          <!-- <a class="btn btn-light" (click)="goToFullScreen()"><i class="fa fa-window-maximize fa-2x"></i></a> -->
+          <!-- <a class="btn btn-light" (click)="exportCSV()"><i class="fa fa-file-text-o fa-2x"></i></a>
+          <a class="btn btn-light" (click)="exportXLSX()"><i class="fa fa-file-excel-o fa-2x"></i></a> -->
+          <a class="btn btn-light" (click)="exportPDF()"><i class="fa fa-file-pdf-o fa-2x"></i></a>
+          <a class="btn btn-light" (click)="print()"><i class="fa fa-print fa-2x"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.box-header -->
+  <div class="box-body">
+    <table id="dtRelatorioMovimento" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Ocupada?</th>
+          <th>Data Entrada</th>
+          <th>Data Saída</th>
+          <th>Vaga Número</th>
+          <th>Cliente Descrição</th>
+          <th>Cliente Placa</th>
+          <th>Qtd Horas Extras</th>
+          <th>Valor Horas Extras</th>
+          <th>Valor Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let movimento of movimentos">
+          <td>{{movimento.id}}</td>
+          <td>{{movimento.vaga.status == 'LIVRE' ? 'NÃO' : 'SIM'}}</td>
+          <td>{{movimento?.dataEntrada | date:'dd/MM/yyyy hh:mm:ss'}}</td>
+          <td>{{movimento?.dataSaida | date:'dd/MM/yyyy hh:mm:ss'}}</td>
+          <td>{{movimento.vaga.numero}}</td>
+          <td>{{movimento.cliente?.descricao}}</td>
+          <td>{{movimento.cliente?.placa}}</td>
+          <td>{{movimento?.qtdHorasExtras}}</td>
+          <td>{{formatarMoeda(movimento?.valorHorasExtras)}}</td>
+          <td>{{formatarMoeda(movimento?.valorTotal)}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- /.box-body -->
+</div>
+<!-- /.box -->

@@ -24,16 +24,26 @@
             ],
             "styles": [
               "node_modules/bootstrap-css-only/css/bootstrap.min.css",
+              "src/assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css",
               "node_modules/font-awesome/css/font-awesome.css",
               "node_modules/ionicons/css/ionicons.css",
               "node_modules/prismjs/themes/prism-tomorrow.css",
               "node_modules/admin-lte-css/dist/css/AdminLTE.css",
               "node_modules/admin-lte-css/dist/css/skins/_all-skins.css",
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.css"
             ],
             "scripts": [
+              "node_modules/jquery/dist/jquery.js",
+              "src/assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js",
+              "src/assets/bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js",
+              "src/assets/plugins/input-mask/jquery.inputmask.js",
+              "src/assets/plugins/input-mask/jquery.inputmask.date.extensions.js",
+              "src/assets/plugins/input-mask/jquery.inputmask.extensions.js",
               "node_modules/prismjs/prism.js",
-              "node_modules/prismjs/components/prism-typescript.js"
+              "node_modules/prismjs/components/prism-typescript.js",
+              "node_modules/jspdf/dist/jspdf.min.js",
+              "node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.js"
             ]
           },
           "configurations": {

@@ -1,0 +1,55 @@
+<section class="content-header">
+  <h1>
+    Operação
+    <small>Pagar Ticket</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a [routerLink]="['/']"><i class="fa fa-cogs"></i> Operação</a></li>
+    <li class="active">Pagar Ticket</li>
+  </ol>
+</section>
+
+<div class="box box-default">
+  <form (ngSubmit)="onSubmitForm()">
+    <div class="box-body">
+      <div class="row">
+        <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4">
+          <label class="control-label" for="numero">Número da Vaga</label>
+          <input type="text" class="form-control" id="numero" name="numero" placeholder="Número" disabled
+            [(ngModel)]="movimento.vaga.numero">
+        </div>
+        <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4">
+          <label class="control-label" for="placa">Placa</label>
+          <input type="text" class="form-control" id="placa" name="placa" placeholder="Placa" disabled
+            [(ngModel)]="movimento.cliente.placa">
+        </div>
+        <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4">
+          <label class="control-label" for="descricao">Descrição</label>
+          <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descrição" disabled
+            [(ngModel)]="movimento.cliente.descricao">
+        </div>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <h3><span><small style="font-weight: bold">Valor da Permanência <small>(Até 3 horas)</small>: </small> &nbsp;</span> <span>{{valorPermanencia}}</span></h3>
+          <h3><span><small style="font-weight: bold">Quantidade horas Extras: </small> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span>{{qtdHorasExtras}}</span></h3>
+          <h3><span><small style="font-weight: bold">Valor Horas Extras: </small> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span>{{valorHorasExtras}}</span></h3>
+          <h3><span><small style="font-weight: bold">Valor Total: </small> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span>{{valorTotal}}</span></h3>
+        </div>
+      </div>
+    </div>
+    <div class="box-footer">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-2">
+          <button type="submit" [disabled]="!movimento.cliente.placa && movimento.cliente.placa === ''"
+            class="btn btn-block btn-primary btnSm">Salvar</button>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-2">
+          <button type="button" class="btn btn-block btn-danger" (click)="voltar()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>

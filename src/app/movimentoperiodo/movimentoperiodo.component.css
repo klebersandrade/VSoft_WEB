@@ -1,0 +1,65 @@
+@media (max-width: 767.98px) { 
+    .iconSmHide {
+      display: none;
+  } 
+  .lbEmpty{
+      display: none;
+  }
+}
+
+
+
+#dtRelatorioMovimento:-webkit-full-screen {
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	margin: 0;
+}
+
+.table>tbody>tr:-webkit-full-screen { 
+	height: 20px;
+}
+
+#dtRelatorioMovimento thead:-webkit-full-screen { 
+	background-color: white;
+}
+
+#dtRelatorioMovimento:-moz-full-screen {
+	background-color: white;
+	margin: 0;
+}
+
+.table>tbody>tr:-moz-full-screen { 
+	height: 20px;
+}
+
+#dtRelatorioMovimento thead:-moz-full-screen { 
+	background-color: white;
+}
+
+#dtRelatorioMovimento:-ms-fullscreen {
+	background-color: white;
+	margin: 0;
+}
+
+.table>tbody>tr:-ms-fullscreen { 
+	height: 20px;
+}
+
+#dtRelatorioMovimento thead:-ms-fullscreen { 
+	background-color: white;
+}
+
+/* W3C proposal that will eventually come in all browsers */
+#dtRelatorioMovimento:fullscreen { 
+	background-color: white;
+	margin: 0;
+}
+
+#dtRelatorioMovimento thead:fullscreen { 
+	background-color: white;
+}
+
+.table>tbody>tr:fullscreen { 
+	height: 20px;
+}

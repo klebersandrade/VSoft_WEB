@@ -1,3 +1,53 @@
-<p>
-  situacaoestacionamento works!
-</p>
+<section class="content-header">
+  <h1>
+    Relatórios
+    <small>Situação do Estacionamento</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a [routerLink]="['/']"><i class="fa fa-bar-chart"></i> Relatórios</a></li>
+    <li class="active">Situação do Estacionamento</li>
+  </ol>
+</section>
+
+<div class="box">
+  <div class="box-header">
+    <div class="form-group col-xs-12 col-sm-4 col-md-3 col-lg-2 pull-right">
+      <div class="row pull-right" style="margin-bottom: 2px">
+        <!-- <a class="btn btn-light" (click)="goToFullScreen()"><i class="fa fa-window-maximize fa-2x"></i></a> -->
+        <!-- <a class="btn btn-light" (click)="exportCSV()"><i class="fa fa-file-text-o fa-2x"></i></a>
+        <a class="btn btn-light" (click)="exportXLSX()"><i class="fa fa-file-excel-o fa-2x"></i></a> -->
+        <a class="btn btn-light" (click)="exportPDF()"><i class="fa fa-file-pdf-o fa-2x"></i></a>
+        <a class="btn btn-light" (click)="print()"><i class="fa fa-print fa-2x"></i></a>
+      </div>
+    </div>
+  </div>
+  <!-- /.box-header -->
+  <div class="box-body">
+    <table id="example1" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Vaga Número</th>
+          <th>Vaga Status</th>
+          <th>Cliente Descrição</th>
+          <th>Cliente Placa</th>
+          <th>Data Entrada</th>
+          <th>Data Saída</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let situacao of situacoes">
+          <td>{{situacao.vaga.id}}</td>
+          <td>{{situacao.vaga.numero}}</td>
+          <td>{{situacao.vaga.status}}</td>
+          <td>{{situacao.movimento?.cliente?.descricao}}</td>
+          <td>{{situacao.movimento?.cliente?.placa}}</td>
+          <td>{{situacao.movimento?.dataEntrada | date:'dd/MM/yyyy hh:mm:ss'}}</td>
+          <td>{{situacao.movimento?.dataSaida | date:'dd/MM/yyyy hh:mm:ss'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- /.box-body -->
+</div>
+<!-- /.box -->

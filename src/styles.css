@@ -8,3 +8,9 @@
 .table-bordered > tfoot > tr > td {
   border-color: #eae3e3;
 }
+
+@media  (max-width: 767.98px) {
+  .btnSm{
+    margin-bottom: 10px
+  }
+}
