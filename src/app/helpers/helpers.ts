@@ -87,7 +87,7 @@ export const exportTableToXLSX = (dados: any[]) => {
     downloadXLSX(wbout, 'dados.xlsx');
 };
 
-export const exportHTMLToPdf = (dados: any[], titulos: string[], returnContent: boolean) => {
+export const exportHTMLToPdf = (dados: any[], titulos: string[], returnContent: boolean, lastRowFooter: boolean = false) => {
 
     const linhas = dados.map((dado) => {
         const row = [];
@@ -108,7 +108,13 @@ export const exportHTMLToPdf = (dados: any[], titulos: string[], returnContent: 
     const doc = new jsPDF();
     doc.autoTable({
         head: [titulos],
-        body: linhas
+        body: linhas,
+        didParseCell: function (data) {
+            const rows = data.table.body;
+            if (data.row.index === rows.length - 1 && lastRowFooter) {
+                data.cell.styles.fillColor = [239, 154, 154];
+            }
+        }
     });
     if (returnContent) {
         let file: string = doc.output('datauristring');

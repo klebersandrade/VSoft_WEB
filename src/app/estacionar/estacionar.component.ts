@@ -9,6 +9,8 @@ import { MovimentoService } from './../services/movimento.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 
+declare var $: any;
+
 @Component({
   selector: 'app-estacionar',
   templateUrl: './estacionar.component.html',
@@ -17,6 +19,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class EstacionarComponent implements OnInit, OnDestroy {
   subscriber: Subscription;
   vagaSelecionada: Vaga;
+  placaUnmasked: string;
   cliente: Cliente;
   constructor(
     private route: ActivatedRoute,
@@ -27,11 +30,36 @@ export class EstacionarComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.placaUnmasked = '';
+    $('#placa').inputmask({ mask: 'AAA-9999' });
     this.cliente = {
       descricao: '',
       id: 0,
       placa: ''
     };
+
+    // $('#placa').keypress((e) => {
+    //   const valor: string = $('#placa').inputmask('unmaskedvalue');
+    //   this.placaUnmasked = valor;
+    //   console.log(this.placaUnmasked);
+    //   if (valor.trim() === '' && valor.length < 7) {
+    //     this.cliente.placa = null;
+    //   } else {
+    //     this.cliente.placa = $('#placa').val();
+    //   }
+
+    // });
+
+    $('#placa').keyup((e) => {
+      const valor: string = $('#placa').inputmask('unmaskedvalue');
+      this.placaUnmasked = valor;
+      if (valor.trim() === '' && valor.length < 7) {
+        this.cliente.placa = null;
+      } else {
+        this.cliente.placa = $('#placa').val();
+      }
+
+    });
 
     this.vagaSelecionada = {
       id: 0,
@@ -74,6 +102,10 @@ export class EstacionarComponent implements OnInit, OnDestroy {
         this.toastr.error('Erro', 'Erro ao estacionar na Vaga: \n' + erro.error.message);
       }
     );
+  }
+
+  placaChange(ctPlaca) {
+    console.log(ctPlaca);
   }
 
 }

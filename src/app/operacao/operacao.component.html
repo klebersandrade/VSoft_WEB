@@ -23,7 +23,7 @@
         <div class="box-body">
           <div class="row">
             <div class="col-sm-6 col-md-4 col-lg-3 col-xs-12" *ngFor="let situacao of vagasSituacoes">
-                <a [routerLink]="situacao.vaga.status === 'LIVRE' ? ['/estacionar/'+situacao.vaga.id] : ['/pagar/'+situacao.movimento.id]">
+                <a [routerLink]="situacao.vaga.status === 'LIVRE' ? ['/estacionar/'+situacao.vaga.id] : ['/pagar/'+situacao.movimento.id]" data-toggle="tooltip" data-placement="top" title="{{situacao.vaga.status === 'LIVRE' ? 'Clique para Estacionar' : 'Clique para Pagar'}}">
                   <div class="small-box bg-green"
                   [ngClass]="{
                     'bg-green': situacao.vaga.status === 'LIVRE',
@@ -32,7 +32,7 @@
                   <div class="inner" >
                     <h3>Vaga {{situacao.vaga.numero}}</h3>
                     <p>{{situacao.vaga.status === 'LIVRE' ? 'LIVRE' : 'PLACA: ' + situacao.movimento.cliente.placa}}</p>
-                    <p>{{situacao.vaga.status === 'LIVRE' ? 'ENTRADA: ' : 'ENTRADA: ' + (situacao.movimento.dataEntrada | date:'dd/MM/yyyy hh:mm:ss') }}</p>
+                    <p>{{situacao.vaga.status === 'LIVRE' ? 'ENTRADA: ' : 'ENTRADA: ' + (situacao.movimento.dataEntrada | date:'dd/MM HH:mm') }}</p>
                   </div>
                 </div>
                 </a>

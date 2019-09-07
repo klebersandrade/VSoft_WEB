@@ -20,20 +20,20 @@
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4">
           <label class="control-label" for="placa">Placa</label>
-          <input type="text" class="form-control" id="placa" name="placa" placeholder="Placa"
-            [(ngModel)]="cliente.placa">
+          <input #ctPlaca type="text" class="form-control" id="placa" name="placa" placeholder="Placa"
+            (ngChange)="placaChange(ctPlaca)">
         </div>
         <div class="form-group col-xs-12 col-sm-6 col-md-4 col-lg-4">
           <label class="control-label" for="placa">Descrição</label>
-          <input type="text" class="form-control" id="placa" name="placa" placeholder="Descrição"
-            [(ngModel)]="cliente.descricao">
+          <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Descrição"
+            [(ngModel)]="cliente.descricao" maxlength="100">
         </div>
       </div>
     </div>
     <div class="box-footer">
       <div class="row">
         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-2">
-          <button type="submit" [disabled]="!cliente.placa && cliente.placa === ''" class="btn btn-block btn-primary btnSm">Salvar</button>
+          <button type="submit" [disabled]="placaUnmasked.length < 7" class="btn btn-block btn-primary btnSm">Salvar</button>
         </div>
         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-2">
           <button type="button" class="btn btn-block btn-danger" (click)="voltar()">Cancelar</button>

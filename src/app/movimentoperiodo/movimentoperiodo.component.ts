@@ -15,6 +15,10 @@ declare var $: any;
   styleUrls: ['./movimentoperiodo.component.css']
 })
 export class MovimentoperiodoComponent implements OnInit, OnDestroy {
+  qtdTotMovimentos: number;
+  qtdTotHorasExtras: number;
+  valorTotHorasExtras: string;
+  valorTotal: string;
   movimentos: Movimento[];
   datasFiltroInicial: string;
   datasFiltroFinal: string;
@@ -44,6 +48,19 @@ export class MovimentoperiodoComponent implements OnInit, OnDestroy {
     this.subscript = this.movimentoService.getMovimentosPeriodo(new Date(), new Date()).subscribe(
       (movimentos) => {
         this.movimentos = movimentos;
+
+        this.qtdTotMovimentos = this.movimentos.length;
+        this.qtdTotHorasExtras = 0;
+        let total = 0.000;
+        let totalExtras = 0.000;
+        this.movimentos.forEach(movimento => {
+          this.qtdTotHorasExtras += movimento.qtdHorasExtras;
+          totalExtras += movimento.valorHorasExtras;
+          total += movimento.valorTotal;
+        });
+
+        this.valorTotal = this.formatarMoeda(total);
+        this.valorTotHorasExtras = this.formatarMoeda(totalExtras);
       }
     );
   }
@@ -55,6 +72,19 @@ export class MovimentoperiodoComponent implements OnInit, OnDestroy {
       new Date(this.datasFiltroFinal)).subscribe(
         (movimentos) => {
           this.movimentos = movimentos;
+
+          this.qtdTotMovimentos = this.movimentos.length;
+          this.qtdTotHorasExtras = 0;
+          let total = 0.000;
+          let totalExtras = 0.000;
+          this.movimentos.forEach(movimento => {
+            this.qtdTotHorasExtras += movimento.qtdHorasExtras;
+            totalExtras += movimento.valorHorasExtras;
+            total += movimento.valorTotal;
+          });
+
+          this.valorTotal = this.formatarMoeda(total);
+          this.valorTotHorasExtras = this.formatarMoeda(totalExtras);
         }
       );
   }
@@ -85,7 +115,16 @@ export class MovimentoperiodoComponent implements OnInit, OnDestroy {
         valor: movimento.valorTotal.toFixed(2)
       };
     });
-    exportHTMLToPdf(dadosPDF, ['Ocupada?', 'Data Entrada', 'Data Saída', 'Vaga', 'Descrição', 'Placa', 'Valor'], false);
+    dadosPDF.push({
+      ocupada: this.qtdTotMovimentos.toFixed(0),
+      dataEntrada: '',
+      dataSaida: '',
+      vaga: '',
+      descricao: '',
+      placa: '',
+      valor: this.valorTotal
+    });
+    exportHTMLToPdf(dadosPDF, ['Ocupada?', 'Data Entrada', 'Data Saída', 'Vaga', 'Descrição', 'Placa', 'Valor'], false, true);
   }
 
   print() {
@@ -100,7 +139,16 @@ export class MovimentoperiodoComponent implements OnInit, OnDestroy {
         valor: movimento.valorTotal.toFixed(2)
       };
     });
-    const file = exportHTMLToPdf(dadosPDF, ['Ocupada?', 'Data Entrada', 'Data Saída', 'Vaga', 'Descrição', 'Placa', 'Valor'], true);
+    dadosPDF.push({
+      ocupada: this.qtdTotMovimentos.toFixed(0),
+      dataEntrada: '',
+      dataSaida: '',
+      vaga: '',
+      descricao: '',
+      placa: '',
+      valor: this.valorTotal
+    });
+    const file = exportHTMLToPdf(dadosPDF, ['Ocupada?', 'Data Entrada', 'Data Saída', 'Vaga', 'Descrição', 'Placa', 'Valor'], true, true);
     printToPdf(file);
   }
 

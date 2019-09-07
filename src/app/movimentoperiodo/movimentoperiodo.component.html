@@ -67,8 +67,8 @@
         <tr *ngFor="let movimento of movimentos">
           <td>{{movimento.id}}</td>
           <td>{{movimento.vaga.status == 'LIVRE' ? 'NÃO' : 'SIM'}}</td>
-          <td>{{movimento?.dataEntrada | date:'dd/MM/yyyy hh:mm:ss'}}</td>
-          <td>{{movimento?.dataSaida | date:'dd/MM/yyyy hh:mm:ss'}}</td>
+          <td>{{movimento?.dataEntrada | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+          <td>{{movimento?.dataSaida | date:'dd/MM/yyyy HH:mm:ss'}}</td>
           <td>{{movimento.vaga.numero}}</td>
           <td>{{movimento.cliente?.descricao}}</td>
           <td>{{movimento.cliente?.placa}}</td>
@@ -77,6 +77,20 @@
           <td>{{formatarMoeda(movimento?.valorTotal)}}</td>
         </tr>
       </tbody>
+      <tfoot class="tableFoot">
+        <tr>
+            <td>{{qtdTotMovimentos}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{qtdTotHorasExtras}}</td>
+            <td>{{valorTotHorasExtras}}</td>
+            <td>{{valorTotal}}</td>
+        </tr>
+      </tfoot>
     </table>
   </div>
   <!-- /.box-body -->
