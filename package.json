@@ -60,7 +60,7 @@
     "print-js": "^1.0.61",
     "prismjs": "^1.8.4",
     "rxjs": "^6.4.0",
-    "xlsx": "^0.15.1",
+    "xlsx": "^0.17.0",
     "zone.js": "^0.8.29"
   },
   "devDependencies": {
