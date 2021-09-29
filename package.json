@@ -48,7 +48,7 @@
     "angular-loading-page": "^0.6.0",
     "bootstrap-css-only": "^3.3.7",
     "core-js": "^2.5.4",
-    "datatables.net": "^1.10.19",
+    "datatables.net": "^1.11.3",
     "datatables.net-dt": "^1.10.19",
     "font-awesome": "^4.7.0",
     "ionicons": "^2.0.1",
