@@ -55,7 +55,7 @@
     "jquery": "^3.4.1",
     "jspdf": "^1.5.3",
     "jspdf-autotable": "^3.2.4",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "ngx-toastr": "^10.2.0",
     "print-js": "^1.0.61",
     "prismjs": "^1.8.4",
